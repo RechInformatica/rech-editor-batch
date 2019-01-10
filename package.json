@@ -8,18 +8,44 @@
         "vscode": "^1.30.0"
     },
     "icon": "images/batch.png",
+    "bugs": {
+        "url": "https://github.com/RechInformatica/rech-editor-batch/issues",
+        "email": "smcbreen@microsoft.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RechInformatica/rech-editor-batch.git"
+    },
     "categories": [
+        "Programming Languages",
+        "Snippets",
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onLanguage:Batch"
     ],
-    "main": "./out/extension",
+    "main": "./out/extension.js",
     "contributes": {
-        "commands": [
+        "configurationDefaults": {
+            "[bat]": {
+                "files.encoding": "windows1252",
+                "editor.rulers": [
+                    120
+                ]
+            }
+        },
+        "languages": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "id": "bat",
+                "extensions": [
+                    ".bat"
+                ]
+            }
+        ],
+        "snippets": [
+            {
+                "language": "bat",
+                "path": "./snippets/bat.json"
             }
         ]
     },

@@ -1,0 +1,199 @@
+{
+    // Place your snippets for bat here. Each snippet is defined under a snippet name and has a prefix, body and
+    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+    // same ids are connected.
+    // Example:
+    // "Print to console": {
+    //  "prefix": "log",
+    //  "body": [
+    //      "console.log('$1');",
+    //      "$2"
+    //  ],
+    //  "description": "Log output to console"
+    // }
+    "if" : {
+        "prefix": "if",
+        "body": "if \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Teste com else"
+    },
+    "ifc" : {
+        "prefix": "ifc",
+        "body": "if /i \"%COMPUTERNAME%\"==\"$1\" (\n   $2\n)",
+        "description": "Teste do nome do computador que está executando o Batch"
+    },
+    "ife" : {
+        "prefix": "ife",
+        "body": "if exist \"$1\" (\n   $2\n) else (\n   $3\n)",
+        "description": "Teste de existência de arquivo"
+    },
+    "ifeq" : {
+        "prefix": "ifeq",
+        "body": "if $1 EQU  (\n   $2\n)",
+        "description": "Teste de igualdade"
+    },
+    "ifi" : {
+        "prefix": "ifi",
+        "body": "if /i \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Teste ignorando maiúsculas/minúsculas"
+    },
+    "ifin" : {
+        "prefix": "ifin",
+        "body": "if /i not \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Teste com negação ignorando maiúsculas/minúsculas"
+   },
+    "ifg" : {
+       "prefix": "ifg",
+       "body": "if $1 GTR $2 (\n   $3\n)",
+       "description": "Teste se maior que"
+    },
+    "ifge" : {
+        "prefix": "ifge",
+        "body": "if $1 GEQ $2 (\n   $3\n)",
+        "description": "Teste se maior ou igual que"
+    },
+    "ifl" : {
+        "prefix": "ifl",
+        "body": "if $1 LSS $2 (\n   $3\n)",
+        "description": "Teste de menor que"
+    },
+    "iflq" : {
+        "prefix": "iflq",
+        "body": "if $1 LEQ $2 (\n   $3\n)",
+        "description": "Teste de menor ou igual que"
+    },
+    "ifn" : {
+        "prefix": "ifn",
+        "body": "if not \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Teste com negação"
+    },
+    "ifne" : {
+        "prefix": "ifne",
+        "body": "if not exist \"$1\" (\n   $2\n) else (\n   $3\n)",
+        "description": "Teste de não existência de arquivo"
+    },
+    "ifnq" : {
+        "prefix": "ifnq",
+        "body": "if $1 NEQ $2 (\n   $3\n)",
+        "description": "Teste de desigualdade"
+    },
+    "ifs" : {
+        "prefix": "ifs",
+        "body": "if \"%$1%\"==\"$2\" (\n   $3\n)",
+        "description": "Teste simples (sem o else)"
+    },
+    "ifu" : {
+        "prefix": "ifu",
+        "body": "if /i \"%USERNAME%\"==\"${CURRENT_USERNAME}\" (\n   $1\n)",
+        "description": "Teste do nome do usuário que está executando o Batch"
+    },
+    "ini" : {
+        "prefix": "ini",
+        "body": "@echo off\nrem\nrem ####################################################################################################################\nrem *** $1\nrem --------------------------------------------------------------------------------------------------------------------\n    setlocal",
+        "description": "Comentários e comandos iniciais do Batch"
+    },
+    "fin" : {
+        "prefix": "fin",
+        "body": "rem\nrem Finalização.........................................................................................................\n:Fim\n    endlocal\n",
+        "description": "Label de finalização do Batch"
+    },
+    "for" : {
+        "prefix": "for",
+        "body": "for %%i in ($1) do (\n   $2\n)",
+        "description": "Laço padrão"
+    },
+    "fora" : {
+        "prefix": "fora",
+        "body": "for /f %%i in ($1) do (\n   $2\n)",
+        "description": "Laço para leitura linha a linha de arquivo"
+    },
+    "forc" : {
+        "prefix": "forc",
+        "body": "for /f %%i in ('$1') do (\n   $2\n)",
+        "description": "Varre o resultado da saída de um comando"
+    },
+    "ford" : {
+        "prefix": "ford",
+        "body": "for /d %%i in ($1,,) do (\n   $2\n)",
+        "description": "Laço em lista delimitada por vírgula"
+    },
+    "fore" : {
+        "prefix": "fore",
+        "body": "for /f \"tokens=$1 delims=,\" %%i in () do (\n   $2\n)",
+        "description": "Laço para leitura linha a linha de arquivo com opções"
+    },
+    "fori" : {
+        "prefix": "fori",
+        "body": "for /l %%i in (1,1,$1) do (\n   $2\n)",
+        "description": "Laço utilizando incremento"
+    },
+    "forl" : {
+        "prefix": "forl",
+        "body": "for /l %%i in (0,0,0) do (\n   $1\n)",
+        "description": "Laço infinito"
+    },
+    "forn" : {
+        "prefix": "forn",
+        "body": "for /f \"skip=$1 tokens= delims=,\" %%i in () do (\n   $2\n)",
+        "description": "Laço para leitura linha a linha de arquivo com opções, ignorando as primeiras n linhas"
+    },
+    "foro" : {
+        "prefix": "foro",
+        "body": "for %%a in (\"$1\" \"\" \"\" \"\") do (\n   if /i \"%1\"==%%a (\n      $2\n   )\n)",
+        "description": "Laço para simular teste com OR"
+    },
+    "forv" : {
+        "prefix": "forv",
+        "body": "for /f %%i in ('$1') do set VARIAVEL=%%i",
+        "description": "Resultado da saída de um comando em uma variável"
+    },
+    "goeof" : {
+        "prefix": "goeof",
+        "body": "goto :eof",
+        "description": "Faz goto para sair de um label (goto :eof)"
+    },
+    "gofim" : {
+        "prefix": "gofim",
+        "body": "goto :Fim",
+        "description": "Faz goto para o fim do batch (goto :Fim)"
+    },
+    "delay" : {
+        "prefix": "delay",
+        "body": "setlocal EnableDelayedExpansion",
+        "description": "Habilita a expansão de variáveis de ambiente atrasada"
+    },
+    "enable" : {
+        "prefix": "enable",
+        "body": "setlocal EnableDelayedExpansion",
+        "description": "Habilita a expansão de variáveis de ambiente atrasada"
+    },
+    "log" : {
+        "prefix": "log",
+        "body": "call GravaLog.bat %0 %*",
+        "description": "Grava log de execução do batch"
+    },
+    "replace" : {
+        "prefix": "replace",
+        "body": "    set VAR=%VAR:$1=%",
+        "description": "Faz troca de conteúdo em uma variável"
+    },
+    "substring" : {
+        "prefix": "substring",
+        "body": ":~d,n",
+        "description": "Substring de um deslocamento (d) tantos caracteres (n)"
+    },
+    "substringd" : {
+        "prefix": "substringd",
+        "body": ":~d",
+        "description": "Substring de um deslocamento (d) até o fim da String"
+    },
+    "thelp" : {
+        "prefix": "thelp",
+        "body": "rem Opções de exibição de ajuda\n    for %%a in (\"\" \"/H\" \"/Help\" \"Help\") do if /i \"%~1\"==%%a (goto :Help)",
+        "description": "Teste opções de ajuda"
+    },
+    "help" : {
+        "prefix": "Help",
+        "body": "rem\nrem Exibe Ajuda.........................................................................................................\n:Help\n    echo Insira aqui a descrição do que faz o batch\n    echo.\n    echo Sintaxe: NOME_BATCH VERSAO OUTROS_PARAMETROS_OBRIGATORIOS [PAR_OPCIONAL_1] [PAR_OPCIONAL_2]\n    echo.\n    echo                     VERSAO = Número, Sigla ou Abreviação da Versão do SIGER\n    echo        OUTROS_PARAMETROS_1 = Ajuda do parâmetro 1\n    echo        OUTROS_PARAMETROS_2 = Ajuda do parâmetro 2\n    echo             PAR_OPCIONAL_1 = Ajuda do parâmetro opcional 1\n    echo             PAR_OPCIONAL_2 = Ajuda do parâmetro opcional 2\n    echo.\n    echo Exemplos:\n    echo -----------\n    echo NOME_BATCH PARAMETROS\n    echo Explicação do que faz o comando\n    echo.\n    echo NOME_BATCH PARAMETROS\n    echo Explicação do que faz o comando\n    echo.\n    goto :Fim",
+        "description": "Exibe ajuda"
+    },
