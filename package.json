@@ -1,6 +1,6 @@
 {
     "name": "rech-editor-batch",
-    "displayName": "rech-editor-batch",
+    "displayName": "Rech Batch",
     "description": "Edit Batch files with Visual Studio Code.",
     "version": "0.0.1",
     "publisher": "rechinformatica",
