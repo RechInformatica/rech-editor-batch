@@ -8,9 +8,10 @@
 		"vscode": "^1.30.0"
 	},
 	"icon": "images/batch.png",
+    "license": "SEE LICENSE IN LICENSE.txt",
 	"bugs": {
 		"url": "https://github.com/RechInformatica/rech-editor-batch/issues",
-		"email": "smcbreen@microsoft.com"
+        "email": "infra@rech.com.br"
 	},
 	"repository": {
 		"type": "git",
@@ -59,7 +60,7 @@
 	},
 	"devDependencies": {
 		"typescript": "^2.6.1",
-		"vscode": "^1.1.6",
+        "vscode": "^1.1.21",
 		"tslint": "^5.8.0",
 		"@types/node": "^7.0.43",
 		"@types/mocha": "^2.2.42",
