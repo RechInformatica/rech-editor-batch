@@ -286,8 +286,8 @@
         "signature": "f490e67685df95463cc22c608ea7b79a1d23ebfcade983f0b32d395f92d24bb2"
       },
       "./src/lsp/server.ts": {
-        "version": "52c756a794748f1dade0edf18933ead618324f5d81fe5a712af3e8e8720d1bcf",
-        "signature": "dfc2228794d0b338f92c0f43c40173fad672f0356cd211fca1c965aef4511f48"
+        "version": "6340619453d76e6ab3e2bf63dfba26c5602d1ee30d8733c6e33af9898b031bc8",
+        "signature": "51d92a8b8a39d656e8f3cf3faa7459e8497aaabd41d97ab8271ea20413ac822a"
       },
       "./src/test/extension.test.ts": {
         "version": "296792b4889a200776bd14b1282ef5e36a4acb1689f912547ba2380e6aa30ab7",
@@ -337,7 +337,6 @@
       "moduleResolution": 2,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
-      "watch": true,
       "project": "./",
       "configFilePath": "./tsconfig.json"
     },
@@ -1160,6 +1159,9 @@
       "./src/lsp/batchreferencesfinder.ts": [
         "./node_modules/vscode-languageserver/lib/main.d.ts"
       ],
+      "./src/lsp/server.ts": [
+        "./node_modules/vscode-languageserver/lib/main.d.ts"
+      ],
       "./node_modules/vscode/lib/testrunner.d.ts": [
         "./node_modules/@types/node/base.d.ts",
         "./node_modules/@types/node/ts3.2/index.d.ts"
@@ -1251,8 +1253,8 @@
       "./node_modules/rech-ts-commons/out/buffer/buffersplitter.d.ts",
       "./node_modules/rech-ts-commons/out/buffer/wordfinder.d.ts",
       "./node_modules/rech-ts-commons/out/index.d.ts",
+      "./src/lsp/batchdeclarationfinder.ts",
       "./src/lsp/batchreferencesfinder.ts",
-      "./src/lsp/server.ts",
       "./src/test/extension.test.ts",
       "./node_modules/vscode/lib/testrunner.d.ts",
       "./src/test/index.ts",
@@ -1260,7 +1262,7 @@
       "./node_modules/@types/iconv-lite/index.d.ts",
       "./node_modules/@types/mocha/index.d.ts",
       "./node_modules/@types/q/index.d.ts",
-      "./src/lsp/batchdeclarationfinder.ts"
+      "./src/lsp/server.ts"
     ]
   },
   "version": "3.7.5"

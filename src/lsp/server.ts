@@ -17,7 +17,10 @@ import {
   CompletionItem,
   ResponseError,
   ErrorCodes,
-  WorkspaceEdit
+  WorkspaceEdit,
+  TextEdit,
+  Range,
+  Position
 } from "vscode-languageserver";
 
 import { BufferSplitter, WordFinder } from "rech-ts-commons";
@@ -35,6 +38,7 @@ connection.onInitialize(async (_params: InitializeParams) => {
       textDocumentSync: documents.syncKind,
       definitionProvider: true,
       referencesProvider: true,
+      renameProvider: true,
     }
   };
 });
@@ -93,6 +97,47 @@ connection.onReferences((params: ReferenceParams): Thenable<Location[] | Respons
     }
   });
 });
+
+connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | ResponseError<undefined>> => {
+  return new Promise((resolve, reject) => {
+    const fullDocument = documents.get(params.textDocument.uri);
+    if (fullDocument) {
+      const text = fullDocument.getText();
+      const word = getLineText(text, params.position.line, params.position.character);
+      new BatchReferencesFinder(text)
+          .findReferences(word, params.textDocument.uri)
+          .then((locations) => {
+            const textEdits: TextEdit[] = convertLocationsToTextEdits(locations, word, params.newName);
+            resolve({ changes: { [params.textDocument.uri]: textEdits } })
+          }).catch(() => {
+            reject();
+          })
+    } else {
+      reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to rename"));
+    }
+  });
+
+});
+
+/**
+ * Converts the specified Location array into an TextEdit array
+ *
+ * @param locations locations to be converted
+ */
+export function convertLocationsToTextEdits(locations: Location[], oldName: string, newName: string): TextEdit[] {
+  const textEdits: TextEdit[] = [];
+  locations.forEach((currentLocation) => {
+    const line = currentLocation.range.start.line;
+    const column = currentLocation.range.start.character;
+    textEdits.push({
+      newText: newName,
+      range: Range.create(
+        Position.create(line, column),
+        Position.create(line, column + oldName.length))
+    });
+});
+  return textEdits;
+}
 
 /**
  * Returns the specified line within the document text
