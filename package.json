@@ -5,7 +5,7 @@
 	"version": "0.0.5",
 	"publisher": "rechinformatica",
 	"engines": {
-		"vscode": "^1.30.0"
+		"vscode": "^1.35.0"
 	},
 	"icon": "images/batch.png",
 	"license": "SEE LICENSE IN LICENSE.txt",
@@ -59,8 +59,8 @@
 		],
 		"commands": [
 			{
-                "command": "rech.editor.batch.batchInsertCommentLine",
-                "title": "Rech Batch: Insert commentary line above"
+				"command": "rech.editor.batch.batchInsertCommentLine",
+				"title": "Rech Batch: Insert commentary line above"
 			},
 			{
 				"command": "rech.editor.batch.tab",
@@ -72,11 +72,11 @@
 			}
 		],
 		"keybindings": [
-            {
-                "command": "rech.editor.batch.batchInsertCommentLine",
+			{
+				"command": "rech.editor.batch.batchInsertCommentLine",
 				"key": "alt+n",
 				"when": "editorLangId == bat"
-            },
+			},
 			{
 				"command": "rech.editor.batch.tab",
 				"key": "tab",
@@ -92,21 +92,36 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"package": "vsce package --out F:/DIV/VSCode/extension/market/rech-editor-batch/rech-editor-batch.vsix",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
+		"compile": "npm run tslint && tsc -p ./",
+		"compile:client": "tsc -p ./",
+		"compile:server": "tsc -p ./",
+		"watch:client": "tsc -watch -p ./",
+		"watch:server": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+		"test": "npm run compile && mocha -r ts-node/register ./src/test/**/*.test.ts",
+		"tslint": "tslint --project tsconfig.json --config tslint.json"
 	},
 	"dependencies": {
-		"rech-editor-cobol": "file:../rech-editor-cobol",
-		"typescript": "^2.6.1",
-		"vscode": "^1.1.21",
-		"tslint": "^5.8.0",
-		"@types/node": "^7.0.43",
-		"@types/mocha": "^2.2.42",
-		"vsce": "^1.53.0"
+		"@types/chai": "4.1.6",
+		"@types/iconv-lite": "0.0.1",
+		"@types/q": "^1.0.0",
+		"chai": "4.2.0",
+		"iconv-lite": "^0.4.24",
+		"q": "^1.4.1",
+		"ts-node": "^7.0.1",
+		"tslint": "^5.14.0",
+		"vscode-languageclient": "^4.1.4",
+		"vscode-languageserver": "^4.1.3",
+		"rech-ts-commons": "1.0.0"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"@types/mocha": "^2.2.48",
+		"@types/node": "^8.10.25",
+		"mocha": "^5.2.0",
+		"typescript": "^3.0.0",
+		"vsce": "^1.53.0",
+		"vscode": "^1.1.21"
+	},
 	"__metadata": {
 		"id": "55c51b52-73f6-4664-a02d-fb57088919cc",
 		"publisherDisplayName": "rechinformatica",

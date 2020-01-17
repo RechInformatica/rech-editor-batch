@@ -1,23 +1,26 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "outDir": "out",
-        "lib": [
-            "es6"
-        ],
-        "sourceMap": true,
-        "rootDir": "src",
-        /* Strict Type-Checking Option */
-        "strict": true,   /* enable all strict type-checking options */
-        /* Additional Checks */
-        "noUnusedLocals": true /* Report errors on unused locals. */
-        // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-        // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
-        // "noUnusedParameters": true,  /* Report errors on unused parameters. */
-    },
-    "exclude": [
-        "node_modules",
-        ".vscode-test"
-    ]
-}
+      /* Basic Options */
+      "target": "es6",
+      "module": "commonjs",
+      "lib": [
+        "es6"
+      ],
+      "declaration": true,                   /* Generates corresponding '.d.ts' file. */
+      "sourceMap": true,                     /* Generates corresponding '.map' file. */
+      "outDir": "./out",                        /* Redirect output structure to the directory. */
+      "rootDir": "./src",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+      "composite": true,                     /* Enable project compilation */
+      /* Strict Type-Checking Options */
+      "strict": true,                           /* Enable all strict type-checking options. */
+      "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+      /* Additional Checks */
+      "noUnusedParameters": true,            /* Report errors on unused parameters. */
+      "noImplicitReturns": false,             /* Report error when not all code paths in function return a value. */
+      "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+      /* Module Resolution Options */
+      "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+      "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
+      "esModuleInterop": true,                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    }
+  }
