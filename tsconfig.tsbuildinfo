@@ -238,7 +238,7 @@
         "signature": "f26edbf2898737885d5966f3b321f7f63589bf9398e539d4367d2b68de1b3f5d"
       },
       "./src/extension.ts": {
-        "version": "49eedcca833d5d55090fb109926e3ca7e3744447fc730f0ff968337154ca6daf",
+        "version": "0f2f7489b602b7e1ec902f5a3d3c28b690d4e767e9e6a66746b4f178731b9f12",
         "signature": "1b4730aadf2be4c7df6c3350ecf2c36ab2f67ad78caf57b53ab991adb7536891"
       },
       "./node_modules/vscode-languageserver/lib/thenable.d.ts": {
@@ -278,15 +278,15 @@
         "signature": "49412fe73f342b26e33bcd3509e2cb12a3cd226c51a876458bfa96f69e8a5abb"
       },
       "./src/lsp/batchdeclarationfinder.ts": {
-        "version": "32ff8934fb71e34713e42cb42f85c3c4152a18a5ea8f585066f3a85575dccc0d",
+        "version": "d39fea413f4b372cd777aa101a77a2d72f47b00f7162fa2b2a279ed75f435414",
         "signature": "5307ffc7a02fa9ed0a350963aa9390edbde829a6e0906c40e2c8756f3767e85b"
       },
       "./src/lsp/batchreferencesfinder.ts": {
-        "version": "17fe815a5c260ebaae9a9f3b9e8477ad4a7cbbe29ee6a20e91a064332d08720f",
+        "version": "107c1ab3c10a99d8f6afe6c71b626288b2d9417e0340bdfaa97e7cad2be78f4d",
         "signature": "f490e67685df95463cc22c608ea7b79a1d23ebfcade983f0b32d395f92d24bb2"
       },
       "./src/lsp/server.ts": {
-        "version": "28f6e1ca4d4d07361f9e036b9f0e373fe9c213f2a711ac959a32b0f4c24540f8",
+        "version": "52c756a794748f1dade0edf18933ead618324f5d81fe5a712af3e8e8720d1bcf",
         "signature": "dfc2228794d0b338f92c0f43c40173fad672f0356cd211fca1c965aef4511f48"
       },
       "./src/test/extension.test.ts": {
@@ -337,6 +337,7 @@
       "moduleResolution": 2,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
+      "watch": true,
       "project": "./",
       "configFilePath": "./tsconfig.json"
     },
@@ -1240,6 +1241,7 @@
       "./node_modules/vscode-languageclient/lib/main.d.ts",
       "./src/lsp/client.ts",
       "./src/bat/tabstopper.ts",
+      "./src/extension.ts",
       "./node_modules/vscode-languageserver/lib/thenable.d.ts",
       "./node_modules/vscode-languageserver/lib/configuration.d.ts",
       "./node_modules/vscode-languageserver/lib/workspacefolders.d.ts",
@@ -1249,7 +1251,6 @@
       "./node_modules/rech-ts-commons/out/buffer/buffersplitter.d.ts",
       "./node_modules/rech-ts-commons/out/buffer/wordfinder.d.ts",
       "./node_modules/rech-ts-commons/out/index.d.ts",
-      "./src/lsp/batchdeclarationfinder.ts",
       "./src/lsp/batchreferencesfinder.ts",
       "./src/lsp/server.ts",
       "./src/test/extension.test.ts",
@@ -1259,7 +1260,7 @@
       "./node_modules/@types/iconv-lite/index.d.ts",
       "./node_modules/@types/mocha/index.d.ts",
       "./node_modules/@types/q/index.d.ts",
-      "./src/extension.ts"
+      "./src/lsp/batchdeclarationfinder.ts"
     ]
   },
   "version": "3.7.5"

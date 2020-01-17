@@ -19,7 +19,7 @@ export function activate(_context: any) {
     context.subscriptions.push(commands.registerCommand('rech.editor.batch.batchInsertCommentLine', async () => {
         await commands.executeCommand('editor.action.insertLineBefore');
         await commands.executeCommand('editor.action.trimTrailingWhitespace');
-        await commands.executeCommand("editor.action.commentLine");
+        await commands.executeCommand('editor.action.commentLine');
     }));
     context.subscriptions.push(commands.registerCommand('rech.editor.batch.tab', () => {
         new TabStopper().processTabKey(true);

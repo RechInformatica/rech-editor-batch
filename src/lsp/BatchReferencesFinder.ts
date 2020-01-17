@@ -35,7 +35,7 @@ export class BatchReferencesFinder {
                     return;
                }
                let result: Location[] = [];
-               const regexText = '[\\s\\.\\%\\!\\,\\)\\(](' + term + ')[\\s\\t\\n\\r\\.\\%\\!\\=\\,\\)\\(]';
+               const regexText = '[\\s\\.\\%\\!\\:\\,\\)\\(](' + term + ')[\\s\\t\\n\\r\\.\\%\\!\\:\\=\\,\\)\\(]';
                const elementUsage = new RegExp(regexText, "img");
                new Scan(this.text).scan(elementUsage, (iterator: any) => {
                     const range = Range.create(

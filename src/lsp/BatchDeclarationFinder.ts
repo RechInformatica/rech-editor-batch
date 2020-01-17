@@ -26,7 +26,7 @@ export class BatchDeclarationFinder {
       */
      public findDeclaration(label: string, uri: string): Promise<Location> {
           return new Promise((resolve, reject) => {
-               const regexText = "^" + label + "$";
+               const regexText = "^\\:" + label + "$";
                const regex = new RegExp(regexText, "gm");
                let declaration: Location | undefined = undefined;
                new Scan(this.buffer).scan(regex, (iterator: any) => {

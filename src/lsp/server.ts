@@ -107,7 +107,7 @@ export function getLineText(
   column: number
 ) {
   const currentLine = BufferSplitter.split(documentText)[line];
-  const batchRegEx = /([:a-zA-Z0-9_\-])+/g
+  const batchRegEx = /([a-zA-Z0-9_\-])+/g
   const word = WordFinder.findWordWithRegex(currentLine, column, batchRegEx);
   return word;
 }
