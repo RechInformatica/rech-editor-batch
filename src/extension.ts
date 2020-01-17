@@ -17,9 +17,9 @@ export function activate(_context: any) {
     // The commandId parameter must match the command field in package.json
     //
     context.subscriptions.push(commands.registerCommand('rech.editor.batch.batchInsertCommentLine', async () => {
-        commands.executeCommand('editor.action.insertLineBefore');
-        commands.executeCommand('editor.action.trimTrailingWhitespace');
-        commands.executeCommand("editor.action.commentLine");
+        await commands.executeCommand('editor.action.insertLineBefore');
+        await commands.executeCommand('editor.action.trimTrailingWhitespace');
+        await commands.executeCommand("editor.action.commentLine");
     }));
     context.subscriptions.push(commands.registerCommand('rech.editor.batch.tab', () => {
         new TabStopper().processTabKey(true);
