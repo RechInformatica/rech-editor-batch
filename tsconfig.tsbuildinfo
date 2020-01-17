@@ -278,7 +278,7 @@
         "signature": "49412fe73f342b26e33bcd3509e2cb12a3cd226c51a876458bfa96f69e8a5abb"
       },
       "./src/lsp/batchdeclarationfinder.ts": {
-        "version": "d39fea413f4b372cd777aa101a77a2d72f47b00f7162fa2b2a279ed75f435414",
+        "version": "6c66e2ea95279def9cf72f280246083400ebc4e4d62265313763596af8618e03",
         "signature": "5307ffc7a02fa9ed0a350963aa9390edbde829a6e0906c40e2c8756f3767e85b"
       },
       "./src/lsp/batchreferencesfinder.ts": {
@@ -286,7 +286,7 @@
         "signature": "f490e67685df95463cc22c608ea7b79a1d23ebfcade983f0b32d395f92d24bb2"
       },
       "./src/lsp/server.ts": {
-        "version": "6340619453d76e6ab3e2bf63dfba26c5602d1ee30d8733c6e33af9898b031bc8",
+        "version": "763d2138143130a1f3ce92401472034e5040e5be7cd15f749f4a0051e44fc4ac",
         "signature": "51d92a8b8a39d656e8f3cf3faa7459e8497aaabd41d97ab8271ea20413ac822a"
       },
       "./src/test/extension.test.ts": {
@@ -337,6 +337,7 @@
       "moduleResolution": 2,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
+      "watch": true,
       "project": "./",
       "configFilePath": "./tsconfig.json"
     },

@@ -31,8 +31,8 @@ export class BatchDeclarationFinder {
                let declaration: Location | undefined = undefined;
                new Scan(this.buffer).scan(regex, (iterator: any) => {
                     const firstCharRange = Range.create(
-                         Position.create(iterator.row, 0),
-                         Position.create(iterator.row, 0)
+                         Position.create(iterator.row, 1),
+                         Position.create(iterator.row, 1)
                     );
                     declaration = Location.create(uri, firstCharRange);
                     iterator.stop();

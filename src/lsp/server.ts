@@ -90,7 +90,7 @@ connection.onReferences((params: ReferenceParams): Thenable<Location[] | Respons
           .then((locations) => {
             resolve(locations)
           }).catch(() => {
-            reject();
+            resolve(undefined);
           })
     } else {
       reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to find references"));
@@ -110,7 +110,7 @@ connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | Resp
             const textEdits: TextEdit[] = convertLocationsToTextEdits(locations, word, params.newName);
             resolve({ changes: { [params.textDocument.uri]: textEdits } })
           }).catch(() => {
-            reject();
+            resolve(undefined);
           })
     } else {
       reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to rename"));
