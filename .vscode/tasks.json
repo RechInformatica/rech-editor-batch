@@ -5,16 +5,71 @@
     "tasks": [
         {
             "type": "npm",
-            "script": "watch",
-            "problemMatcher": "$tsc-watch",
-            "isBackground": true,
+            "script": "compile:client",
+            "group": "build",
             "presentation": {
+                "panel": "dedicated",
                 "reveal": "never"
             },
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "type": "npm",
+            "script": "compile:server",
+            "group": "build",
+            "presentation": {
+                "panel": "dedicated",
+                "reveal": "never"
+            },
+            "problemMatcher": [
+                "$tsc"
+            ]
+        },
+        {
+            "label": "watch",
+            "dependsOn": [
+                {
+                    "type": "npm",
+                    "script": "watch:client"
+                },
+                {
+                    "type": "npm",
+                    "script": "watch:server"
+                }
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "watch:client",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "panel": "dedicated",
+                "reveal": "never"
+            },
+            "problemMatcher": [
+                "$tsc-watch"
+            ]
+        },
+        {
+            "type": "npm",
+            "script": "watch:server",
+            "isBackground": true,
+            "group": "build",
+            "presentation": {
+                "panel": "dedicated",
+                "reveal": "never"
+            },
+            "problemMatcher": [
+                "$tsc-watch"
+            ]
         }
     ]
 }
