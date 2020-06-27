@@ -80,7 +80,7 @@
 			{
 				"command": "rech.editor.batch.tab",
 				"key": "tab",
-				"when": "editorLangId == bat && !inSnippetMode"
+				"when": "editorLangId == bat && !inSnippetMode && !suggestWidgetVisible"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
