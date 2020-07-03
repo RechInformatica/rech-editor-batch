@@ -68,11 +68,8 @@ connection.onDefinition((params: TextDocumentPositionParams): Thenable<Location 
       const word = getLineText(text, params.position.line, params.position.character);
       new BatchDeclarationFinder(text)
         .findDeclaration(word, params.textDocument.uri)
-        .then((location) => {
-          resolve(location);
-        }).catch(() => {
-          resolve(undefined);
-        });
+        .then((location) => resolve(location))
+        .catch(() => resolve(undefined));
     } else {
       reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to find declaration"));
     }
@@ -86,12 +83,9 @@ connection.onReferences((params: ReferenceParams): Thenable<Location[] | Respons
       const text = fullDocument.getText();
       const word = getLineText(text, params.position.line, params.position.character);
       new BatchReferencesFinder(text)
-          .findReferences(word, params.textDocument.uri)
-          .then((locations) => {
-            resolve(locations)
-          }).catch(() => {
-            resolve(undefined);
-          })
+        .findReferences(word, params.textDocument.uri)
+        .then((locations) => resolve(locations))
+        .catch(() => resolve(undefined));
     } else {
       reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to find references"));
     }
@@ -105,13 +99,11 @@ connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | Resp
       const text = fullDocument.getText();
       const word = getLineText(text, params.position.line, params.position.character);
       new BatchReferencesFinder(text)
-          .findReferences(word, params.textDocument.uri)
-          .then((locations) => {
-            const textEdits: TextEdit[] = convertLocationsToTextEdits(locations, word, params.newName);
-            resolve({ changes: { [params.textDocument.uri]: textEdits } })
-          }).catch(() => {
-            resolve(undefined);
-          })
+        .findReferences(word, params.textDocument.uri)
+        .then((locations) => {
+          const textEdits: TextEdit[] = convertLocationsToTextEdits(locations, word, params.newName);
+          resolve({ changes: { [params.textDocument.uri]: textEdits } })
+        }).catch(() => resolve(undefined));
     } else {
       reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to rename"));
     }
@@ -135,7 +127,7 @@ export function convertLocationsToTextEdits(locations: Location[], oldName: stri
         Position.create(line, column),
         Position.create(line, column + oldName.length))
     });
-});
+  });
   return textEdits;
 }
 

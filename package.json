@@ -95,8 +95,7 @@
 		"compile": "npm run tslint && tsc -p ./",
 		"compile:client": "tsc -p ./",
 		"compile:server": "tsc -p ./",
-		"watch:client": "tsc -watch -p ./",
-		"watch:server": "tsc -watch -p ./",
+		"watch": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "npm run compile && mocha -r ts-node/register ./src/test/**/*.test.ts",
 		"tslint": "tslint --project tsconfig.json --config tslint.json"
