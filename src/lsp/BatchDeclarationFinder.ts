@@ -6,16 +6,12 @@ import { Scan } from "rech-ts-commons";
  */
 export class BatchDeclarationFinder {
 
-     /** Editor text*/
-     private buffer: string;
-
      /**
       * Constructor of Find
       *
-      * @param buffer
+      * @param buffer editor text
       */
-     constructor(buffer: string) {
-          this.buffer = buffer;
+     constructor(private buffer: string) {
      }
 
      /**

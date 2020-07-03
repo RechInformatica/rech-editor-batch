@@ -43,20 +43,21 @@
 			]
 		},
 		{
-			"name": "Run mocha",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
+			"name": "Mocha All",
+			"program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
 			"args": [
-				"src/**/*.ts",
-				"--no-timeouts"
+				"-r",
+				"ts-node/register",
+				"--timeout",
+				"999999",
+				"--colors",
+				"${workspaceFolder}/src/test/**/*.ts",
 			],
-			"cwd": "${workspaceRoot}",
-			"runtimeExecutable": null,
-			"env": {
-				"NODE_ENV": "testing"
-			}
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"protocol": "inspector"
 		}
 	],
 	"compounds": [
