@@ -52,6 +52,13 @@
 				"configuration": "./bat.configuration.json"
 			}
 		],
+		"grammars": [
+			{
+				"language": "bat",
+				"scopeName": "source.batchfile",
+				"path": "./syntaxes/batchfile.tmLanguage.json"
+			}
+		],
 		"snippets": [
 			{
 				"language": "bat",
@@ -88,7 +95,17 @@
 				"key": "shift+tab",
 				"when": "editorLangId == bat && !inSnippetMode"
 			}
-		]
+		],
+		"configuration": {
+			"title": "Rech Batch",
+			"properties": {
+				"rech.batch.alertConflictingExtensions": {
+					"type": "boolean",
+					"description": "Controls whether Rech Batch extension should alert when conflicting batch extensions are detected.",
+					"default": true
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

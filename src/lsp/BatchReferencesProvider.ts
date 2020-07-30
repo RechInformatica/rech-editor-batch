@@ -37,8 +37,8 @@ export class BatchReferencesProvider {
   }
 
   private shouldIgnoreElement(term: string, lineText: string, column: number): boolean {
-    let enclosed = this.isEnclosedInQuotes(lineText, column);
-    let variable = this.isVariableReference(term, lineText, column);
+    const enclosed = this.isEnclosedInQuotes(lineText, column);
+    const variable = this.isVariableReference(term, lineText, column);
     return enclosed && !variable;
   }
 
