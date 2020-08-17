@@ -10,18 +10,18 @@ export class ConflictingExtensionsChecker {
 
     check(): void {
         if (this.shouldAlert()) {
-            const extensionName = 'Windows Bat Language Basics';
+            const extensionName = `'Windows Bat Language Basics'`;
             const extensionId = 'vscode.bat';
             const vscodeBatExtension = extensions.getExtension(extensionId);
             if (vscodeBatExtension) {
                 const yesButton = 'Yes';
                 const dontAskAnymoreButton = `Don't ask anymore`;
-                window.showWarningMessage(`The built-in extension ${extensionName} is enabled and conflicts with Rech Batch extension. Would you like to disable ${extensionName}?`, yesButton, 'Not now', dontAskAnymoreButton)
+                window.showInformationMessage(`The built-in extension ${extensionName} is enabled along with Rech Batch, which may lead to misbehavior while inserting 'rem' comments in lowercase. Would you like to manually disable the built-in extension ${extensionName}?`, yesButton, 'Not now', dontAskAnymoreButton)
                     .then(selected => {
                         switch (selected) {
                             case yesButton:
                                 commands.executeCommand('workbench.extensions.action.showExtensionsWithIds', [extensionId]);
-                                window.showInformationMessage(`Please click on the gear icon and disable ${extensionName} extension.`);
+                                window.showInformationMessage(`Please click on the gear icon and manually disable ${extensionName} extension.`);
                                 break;
                             case dontAskAnymoreButton:
                                 this.disableAlertSetting();

@@ -2,7 +2,7 @@
 	"name": "rech-editor-batch",
 	"displayName": "Rech Batch",
 	"description": "Edit Batch files with Visual Studio Code",
-	"version": "0.0.18",
+	"version": "0.0.19",
 	"publisher": "rechinformatica",
 	"engines": {
 		"vscode": "^1.35.0"
