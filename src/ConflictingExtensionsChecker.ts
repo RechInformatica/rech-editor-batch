@@ -16,11 +16,14 @@ export class ConflictingExtensionsChecker {
             if (vscodeBatExtension) {
                 const yesButton = 'Yes';
                 const dontAskAnymoreButton = `Don't ask anymore`;
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises
                 window.showInformationMessage(`The built-in extension ${extensionName} is enabled along with Rech Batch, which may lead to misbehavior while inserting 'rem' comments in lowercase. Would you like to manually disable the built-in extension ${extensionName}?`, yesButton, 'Not now', dontAskAnymoreButton)
                     .then(selected => {
                         switch (selected) {
                             case yesButton:
+                                // eslint-disable-next-line @typescript-eslint/no-floating-promises
                                 commands.executeCommand('workbench.extensions.action.showExtensionsWithIds', [extensionId]);
+                                // eslint-disable-next-line @typescript-eslint/no-floating-promises
                                 window.showInformationMessage(`Please click on the gear icon and manually disable ${extensionName} extension.`);
                                 break;
                             case dontAskAnymoreButton:
@@ -39,6 +42,7 @@ export class ConflictingExtensionsChecker {
 
     private disableAlertSetting(): void {
         const newValue = false;
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         settingsGroup().update(ALERT_CONFLICTING_EXTENSIONS, newValue, ConfigurationTarget.Global);
     }
 

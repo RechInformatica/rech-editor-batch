@@ -62,7 +62,8 @@ export class BatchReferencesProvider {
     for (let i = 0; i < symbols.length && !variable; i++) {
       const symbol = symbols[i];
       const indexBeforeElement = column;
-      const indexAfterElement = column + term.length + 1;
+      var indexAfterElement = column + term.length;
+      indexAfterElement++;
       if (lineText[indexBeforeElement] == symbol && lineText[indexAfterElement] == symbol) {
         variable = true;
       }

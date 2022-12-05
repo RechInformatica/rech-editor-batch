@@ -11,8 +11,7 @@ export class BatchDeclarationFinder {
       *
       * @param buffer editor text
       */
-     constructor(private buffer: string) {
-     }
+     constructor(private buffer: string) {}
 
      /**
       * Find the declaration of the term
@@ -35,9 +34,9 @@ export class BatchDeclarationFinder {
 
                });
                if (declaration) {
-                    resolve(declaration)
+                    return resolve(declaration)
                } else {
-                    reject();
+                    return reject();
                }
           });
      }

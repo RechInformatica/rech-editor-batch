@@ -20,8 +20,11 @@ import {
   WorkspaceEdit,
   TextEdit,
   Range,
-  Position
-} from "vscode-languageserver";
+  Position,
+  TextDocumentSyncKind
+} from "vscode-languageserver/node";
+
+import { TextDocument } from 'vscode-languageserver-textdocument';
 
 import { BufferSplitter, WordFinder } from "rech-ts-commons";
 import { BatchDeclarationFinder } from "./BatchDeclarationFinder";
@@ -30,12 +33,12 @@ import { BatchReferencesFinder } from "./BatchReferencesFinder";
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 const connection = createConnection(ProposedFeatures.all);
-const documents: TextDocuments = new TextDocuments();
+const documents = new TextDocuments(TextDocument);
 
 connection.onInitialize(async (_params: InitializeParams) => {
   return {
     capabilities: {
-      textDocumentSync: documents.syncKind,
+      textDocumentSync: TextDocumentSyncKind.Incremental,
       definitionProvider: true,
       referencesProvider: true,
       renameProvider: true,
@@ -54,13 +57,13 @@ export function hasTypedEnter(ch: string) {
 
 connection.onInitialized(() => {
   // Register for all configuration changes.
-  connection.client.register(
+  void connection.client.register(
     DidChangeConfigurationNotification.type,
     undefined
   );
 });
 
-connection.onDefinition((params: TextDocumentPositionParams): Thenable<Location | ResponseError<undefined>> => {
+connection.onDefinition((params: TextDocumentPositionParams): Thenable<Location | ResponseError<undefined> | undefined> => {
   return new Promise((resolve, reject) => {
     const fullDocument = documents.get(params.textDocument.uri);
     if (fullDocument) {
@@ -71,12 +74,12 @@ connection.onDefinition((params: TextDocumentPositionParams): Thenable<Location 
         .then((location) => resolve(location))
         .catch(() => resolve(undefined));
     } else {
-      reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to find declaration"));
+      reject(new ResponseError<undefined>(ErrorCodes.UnknownErrorCode, "Error to find declaration"));
     }
   })
 });
 
-connection.onReferences((params: ReferenceParams): Thenable<Location[] | ResponseError<undefined>> => {
+connection.onReferences((params: ReferenceParams): Thenable<Location[] | ResponseError<undefined> | undefined> => {
   return new Promise((resolve, reject) => {
     const fullDocument = documents.get(params.textDocument.uri);
     if (fullDocument) {
@@ -85,14 +88,14 @@ connection.onReferences((params: ReferenceParams): Thenable<Location[] | Respons
       new BatchReferencesFinder(text)
         .findReferences(word, params.textDocument.uri)
         .then((locations) => resolve(locations))
-        .catch(() => resolve(undefined));
+        .catch(() => reject(undefined));
     } else {
-      reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to find references"));
+      return reject(new ResponseError<undefined>(ErrorCodes.UnknownErrorCode, "Error to find references"));
     }
   });
 });
 
-connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | ResponseError<undefined>> => {
+connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | ResponseError<undefined> | undefined> => {
   return new Promise((resolve, reject) => {
     const fullDocument = documents.get(params.textDocument.uri);
     if (fullDocument) {
@@ -105,7 +108,7 @@ connection.onRenameRequest((params: RenameParams): Thenable<WorkspaceEdit | Resp
           resolve({ changes: { [params.textDocument.uri]: textEdits } })
         }).catch(() => resolve(undefined));
     } else {
-      reject(new ResponseError<undefined>(ErrorCodes.RequestCancelled, "Error to rename"));
+      reject(new ResponseError<undefined>(ErrorCodes.UnknownErrorCode, "Error to rename"));
     }
   });
 
