@@ -5,7 +5,6 @@ import { commands, ExtensionContext } from 'vscode';
 import { Client } from './lsp/client';
 import { TabStopper } from './bat/TabStopper';
 import { ConflictingExtensionsChecker } from './ConflictingExtensionsChecker';
-// import { BatchTabStopper } from './bat/BatchTabStopper';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed

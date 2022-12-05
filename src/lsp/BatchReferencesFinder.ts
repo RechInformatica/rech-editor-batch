@@ -1,8 +1,5 @@
-import { Location, Position, Range } from "vscode-languageserver"
+import { Location, Position, Range } from "vscode-languageserver";
 import { BatchReferencesProvider, BatchElementPosition } from "./BatchReferencesProvider";
-
-/** Minimum word size */
-const MIN_WORD_SIZE = 3;
 
 /**
  * Class to find Batch references
@@ -11,11 +8,10 @@ export class BatchReferencesFinder {
 
   /**
    * Constructor of Find
-   *
-   * @param editor editor text
+   * 
+   * @param text editor text
    */
-  constructor(private text: string) {
-  }
+  constructor(private text: string) {}
 
   /**
    * Find the declaration of the term

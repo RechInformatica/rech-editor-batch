@@ -1,5 +1,5 @@
 import { ExtensionContext } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient';
+import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 import * as path from 'path';
 
 /**
@@ -44,6 +44,7 @@ export class Client {
 			clientOptions
 		);
 		// Start the client. This will also launch the server
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
 		Client.client.start();
 	}
 

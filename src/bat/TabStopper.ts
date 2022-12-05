@@ -27,6 +27,7 @@ export class TabStopper {
      * Returns the configured tabstops or default values if no tabstop is configured
      */
     public getTabs(): number[] {
+        // eslint-disable-next-line no-magic-numbers
         return [0, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52, 55, 58, 61];
     }
 
@@ -38,11 +39,12 @@ export class TabStopper {
      * @param sel selection
      * @param inserting boolean indicating whether the editor is inserting or removing a tab
      */
-    private executeTab(editor: TextEditor, doc: TextDocument, sel: Selection[], inserting: boolean) {
+    private executeTab(editor: TextEditor, doc: TextDocument, sel: readonly Selection[], inserting: boolean) {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         editor.edit(edit => {
             for (var x = 0; x < sel.length; x++) {
                 if (sel[x].start.line === sel[x].end.line) {
-                    var position = sel[x].start;
+                    const position = sel[x].start;
                     if (inserting) {
                         this.singleSelectionTab(edit, position);
                     } else {
@@ -110,9 +112,9 @@ export class TabStopper {
             var charpos = selection.start.character;
             if (charpos === 0) {
                 const pttrn = /^\s*/;
-                var selline = doc.getText(selection);
+                const selline = doc.getText(selection);
                 if (selline !== null) {
-                    var match = selline.match(pttrn);
+                    const match = selline.match(pttrn);
                     if (match !== null) {
                         charpos = match[0].length;
                     }
@@ -129,7 +131,7 @@ export class TabStopper {
      * @param pos current position
      */
     private tabSize(pos: number) {
-        var tabs = this.getTabs();
+        const tabs = this.getTabs();
         var tab = 0;
         for (var index = 0; index < tabs.length; index++) {
             tab = tabs[index];
@@ -149,7 +151,7 @@ export class TabStopper {
      * @param pos current position
      */
     private unTabSize(pos: number) {
-        var tabs = this.getTabs();
+        const tabs = this.getTabs();
         if (pos > tabs[tabs.length - 1]) {
             if ((pos - tabs[tabs.length - 1]) % 3 === 0) {
                 return 3;
@@ -157,7 +159,7 @@ export class TabStopper {
             return (pos - tabs[tabs.length - 1]) % 3;
         }
         for (var index = tabs.length - 1; index > -1; index--) {
-            var tab = tabs[index];
+            const tab = tabs[index];
             if (tab < pos) {
                 return pos - tab;
             }
