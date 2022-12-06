@@ -101,7 +101,7 @@
 				"rech.batch.snippetsType": {
 					"type": "string",
 					"default": "Community",
-					"description": "Switch to different snippets (you should use the community configuration if you are not at Rech)",
+					"description": "Switch to different snippets",
 					"enum": [
 						"Rech Internal",
 						"Community"
