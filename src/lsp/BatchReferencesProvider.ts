@@ -21,19 +21,26 @@ export class BatchReferencesProvider {
     return new Promise((resolve, reject) => {
       // If the word is too small
       if (term.length < MIN_WORD_SIZE) {
-        reject();
-        return;
+        return reject();
       }
       const result: BatchElementPosition[] = [];
-      const regexText = '[\\s\\.\\%\\!\\:\\,\\)\\(](' + term + ')[\\s\\t\\n\\r\\.\\%\\!\\:\\=\\,\\)\\(]';
+      const regexText = '([\\s\\.\\%\\!\\:\\,\\)\\(])?(' + term + ')([\\s\\t\\n\\r\\.\\%\\!\\:\\=\\,\\)\\(])?';
       const elementUsage = new RegExp(regexText, "img");
       new Scan(text).scan(elementUsage, (iterator: any) => {
         if (!this.shouldIgnoreElement(term, iterator.lineContent, iterator.column)) {
-          result.push({ line: iterator.row, column: iterator.column + 1 });
+          result.push({ line: iterator.row, column: this.shouldMoveColumnCursor(iterator) });
         }
       });
-      resolve(result);
+      return resolve(result);
     });
+  }
+
+  private shouldMoveColumnCursor(iterator: any): number {
+    if (iterator.column != 0 || iterator.match.includes(":")) {
+      return iterator.column + 1;
+    } else {
+      return iterator.column;
+    }
   }
 
   private shouldIgnoreElement(term: string, lineText: string, column: number): boolean {
