@@ -2,7 +2,7 @@
 	"name": "rech-editor-batch",
 	"displayName": "Rech Batch",
 	"description": "Edit Batch files with Visual Studio Code",
-	"version": "0.0.20",
+	"version": "0.0.21",
 	"publisher": "rechinformatica",
 	"engines": {
 		"vscode": "^1.73.1"
@@ -32,9 +32,6 @@
 		"configurationDefaults": {
 			"[bat]": {
 				"files.encoding": "windows1252",
-				"editor.rulers": [
-					120
-				],
 				"editor.tabSize": 3,
 				"editor.detectIndentation": true,
 				"editor.trimAutoWhitespace": true,
