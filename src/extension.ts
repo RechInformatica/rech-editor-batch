@@ -5,12 +5,14 @@ import { commands, ExtensionContext } from 'vscode';
 import { Client } from './lsp/client';
 import { TabStopper } from './bat/TabStopper';
 import { ConflictingExtensionsChecker } from './ConflictingExtensionsChecker';
+import { SnippetsGenerator } from './SnippetsGenerator';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(_context: any) {
 
     new ConflictingExtensionsChecker().check();
+    new SnippetsGenerator().generate();
 
     const context = <ExtensionContext>_context;
     Client.startServerAndEstablishCommunication(context);

@@ -1,0 +1,157 @@
+{
+    "if": {
+        "prefix": "if",
+        "body": "if \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Conditional with else clause"
+    },
+    "ifc": {
+        "prefix": "ifc",
+        "body": "if /i \"%COMPUTERNAME%\"==\"$1\" (\n   $2\n)",
+        "description": "Check computer's name of the user who is executing the Batch"
+    },
+    "ife": {
+        "prefix": "ife",
+        "body": "if exist \"$1\" (\n   $2\n) else (\n   $3\n)",
+        "description": "Check if a file exists"
+    },
+    "ifeq": {
+        "prefix": "ifeq",
+        "body": "if $1 EQU  (\n   $2\n)",
+        "description": "Check equality"
+    },
+    "ifi": {
+        "prefix": "ifi",
+        "body": "if /i \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Check equality ignoring case"
+    },
+    "ifin": {
+        "prefix": "ifin",
+        "body": "if /i not \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Check negative equality ignoring case"
+    },
+    "ifg": {
+        "prefix": "ifg",
+        "body": "if $1 GTR $2 (\n   $3\n)",
+        "description": "If greater than"
+    },
+    "ifge": {
+        "prefix": "ifge",
+        "body": "if $1 GEQ $2 (\n   $3\n)",
+        "description": "If greater than or equal to"
+    },
+    "ifl": {
+        "prefix": "ifl",
+        "body": "if $1 LSS $2 (\n   $3\n)",
+        "description": "If less than"
+    },
+    "iflq": {
+        "prefix": "iflq",
+        "body": "if $1 LEQ $2 (\n   $3\n)",
+        "description": "If less than or equal to"
+    },
+    "ifn": {
+        "prefix": "ifn",
+        "body": "if not \"%$1%\"==\"$2\" (\n   $3\n) else (\n   $4\n)",
+        "description": "Check negative equality"
+    },
+    "ifne": {
+        "prefix": "ifne",
+        "body": "if not exist \"$1\" (\n   $2\n) else (\n   $3\n)",
+        "description": "Check if a file does not exists"
+    },
+    "ifnq": {
+        "prefix": "ifnq",
+        "body": "if $1 NEQ $2 (\n   $3\n)",
+        "description": "Check inequality"
+    },
+    "ifs": {
+        "prefix": "ifs",
+        "body": "if \"%$1%\"==\"$2\" (\n   $3\n)",
+        "description": "Simple conditional (without else clause)"
+    },
+    "ifu": {
+        "prefix": "ifu",
+        "body": "if /i \"%USERNAME%\"==\"${CURRENT_USERNAME}\" (\n   $1\n)",
+        "description": "Check the username of the user who is executing the Batch"
+    },
+    "for": {
+        "prefix": "for",
+        "body": "for %%i in ($1) do (\n   $2\n)",
+        "description": "Simple loop"
+    },
+    "fora": {
+        "prefix": "fora",
+        "body": "for /f %%i in ($1) do (\n   $2\n)",
+        "description": "Loop reading line by line from a file"
+    },
+    "forc": {
+        "prefix": "forc",
+        "body": "for /f %%i in ('$1') do (\n   $2\n)",
+        "description": "Iterates over a command output"
+    },
+    "ford": {
+        "prefix": "ford",
+        "body": "for /d %%i in ($1,,) do (\n   $2\n)",
+        "description": "Loop through a comma separated list"
+    },
+    "fore": {
+        "prefix": "fore",
+        "body": "for /f \"tokens=$1 delims=,\" %%i in () do (\n   $2\n)",
+        "description": "Loop reading line by line from a file with options"
+    },
+    "fori": {
+        "prefix": "fori",
+        "body": "for /l %%i in (1,1,$1) do (\n   $2\n)",
+        "description": "Incremental for loop"
+    },
+    "forl": {
+        "prefix": "forl",
+        "body": "for /l %%i in (0,0,0) do (\n   $1\n)",
+        "description": "Infinite loop"
+    },
+    "forn": {
+        "prefix": "forn",
+        "body": "for /f \"skip=$1 tokens= delims=,\" %%i in () do (\n   $2\n)",
+        "description": "Loop reading line by line from a file with options, ignoring the first n lines"
+    },
+    "foro": {
+        "prefix": "foro",
+        "body": "for %%a in (\"$1\" \"\" \"\" \"\") do (\n   if /i \"%1\"==%%a (\n      $2\n   )\n)",
+        "description": "Loop for simulating a logical OR"
+    },
+    "forv": {
+        "prefix": "forv",
+        "body": "for /f %%i in ('$1') do set VARIABLE=%%i",
+        "description": "Set a variable with the content of a command output"
+    },
+    "goeof": {
+        "prefix": "goeof",
+        "body": "goto :eof",
+        "description": "Command goto to go out of a label (goto :eof)"
+    },
+    "delay": {
+        "prefix": "delay",
+        "body": "setlocal EnableDelayedExpansion",
+        "description": "Enable the delayed environment variable expansion mode"
+    },
+    "enable": {
+        "prefix": "enable",
+        "body": "setlocal EnableDelayedExpansion",
+        "description": "Enable the delayed environment variable expansion mode"
+    },
+    "replace": {
+        "prefix": "replace",
+        "body": "    set VAR=%VAR:$1=%",
+        "description": "Change the content of a variable"
+    },
+    "substring": {
+        "prefix": "substring",
+        "body": ":~d,n",
+        "description": "Substring skipping (d) characters and extracting the next (n)"
+    },
+    "substringd": {
+        "prefix": "substringd",
+        "body": ":~d",
+        "description": "Substring skipping (d) characters and extracting until the end"
+    }
+}
