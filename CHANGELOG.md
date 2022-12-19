@@ -1,7 +1,14 @@
-# Change Log
-All notable changes to the "rech-editor-batch" extension will be documented in this file.
+## [0.0.21] - 2022-12-15
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Added
+* `rech.batch.snippetsType` - Snippets configuration that can change the source of snippets. There are two options:
+  * ***Rech Internal*** - Focused on people who work at Rech (*Portuguese*).
+  * ***Community*** - Focused on community (*English*).
+* `rech.batch.initialTabAligment` - Initial tab aligment configuration that can set the first tab size.
 
-## [Unreleased]
-- Initial release
+### Changed
+* Tab sizes became dynamic according to `editor.tabSize` configuration.
+
+### Removed
+* Fixed ruler removed. To continue using the previous configuration, the user should add this line of code at the settings.json file:
+  > "editor.rulers": [120]
