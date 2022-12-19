@@ -1,6 +1,6 @@
 'use strict';
 
-import { Position, Range, TextDocument, TextEditor, TextEditorEdit, Selection, window } from 'vscode';
+import { Position, Range, TextDocument, TextEditor, TextEditorEdit, Selection, window, WorkspaceConfiguration, workspace } from 'vscode';
 
 /**
  * Class used to modify the Tab Stop tipically used with Batch files.
@@ -24,11 +24,12 @@ export class TabStopper {
     }
 
     /**
-     * Returns the configured tabstops or default values if no tabstop is configured
+     * Return the first two tab stops according to the configuration and default values
+     *
+     * @return {number[]}
      */
-    public getTabs(): number[] {
-        // eslint-disable-next-line no-magic-numbers
-        return [0, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 43, 46, 49, 52, 55, 58, 61];
+    private getTabs(): number[] {
+        return [0, this.getInitialTabAlignment()];
     }
 
     /**
@@ -73,7 +74,24 @@ export class TabStopper {
     }
 
     /**
+     * Get the value of the active text editor's tab size
+     *
+     * @return {number} Tab size
+     */
+    private getEditorTabValue(): number {
+        const codeTabSizeConfiguration = window.activeTextEditor?.options.tabSize;
+        var codeTabSize: number;
+        if (codeTabSizeConfiguration == undefined) {
+            codeTabSize = 3
+        } else {
+            codeTabSize = Number(codeTabSizeConfiguration);
+        }
+        return codeTabSize;
+    }
+
+    /**
      * Removes a single selecton tab
+     *
      * @param edit text editor
      * @param doc current document
      * @param pos position to insert the tab
@@ -129,8 +147,9 @@ export class TabStopper {
      * Returns the tab size
      *
      * @param pos current position
+     * @return {number}
      */
-    private tabSize(pos: number) {
+    private tabSize(pos: number): number {
         const tabs = this.getTabs();
         var tab = 0;
         for (var index = 0; index < tabs.length; index++) {
@@ -141,22 +160,37 @@ export class TabStopper {
             }
         }
         // outside range?
-        return 3 - ((pos - tabs[tabs.length - 1]) % 3);
+        const tabValue = this.getEditorTabValue();
+        return tabValue - ((pos - tabs[tabs.length - 1]) % tabValue);
     }
 
+    /**
+     * Get the value of the initial tab alignment according to the configuration or the active editor tab value
+     *
+     * @return {number} Initial tab alignment
+     */
+    private getInitialTabAlignment(): number {
+        const tabConfigString = this.settingsGroup().get<string>("initialTabAlignment", "4");
+        if (tabConfigString == "off") {
+            return this.getEditorTabValue();
+        }
+        return Number(tabConfigString);
+    }
 
     /**
      * Returns the untab size
      *
      * @param pos current position
+     * @return {number}
      */
-    private unTabSize(pos: number) {
+    private unTabSize(pos: number): number {
         const tabs = this.getTabs();
         if (pos > tabs[tabs.length - 1]) {
-            if ((pos - tabs[tabs.length - 1]) % 3 === 0) {
-                return 3;
+            const tabSize = this.getEditorTabValue();
+            if ((pos - tabs[tabs.length - 1]) % tabSize === 0) {
+                return tabSize;
             }
-            return (pos - tabs[tabs.length - 1]) % 3;
+            return (pos - tabs[tabs.length - 1]) % tabSize;
         }
         for (var index = tabs.length - 1; index > -1; index--) {
             const tab = tabs[index];
@@ -165,6 +199,15 @@ export class TabStopper {
             }
         }
         return 0;
+    }
+
+    /**
+     * Return the settings group of Rech Batch extension
+     *
+     * @return {WorkspaceConfiguration}
+     */
+    private settingsGroup(): WorkspaceConfiguration {
+        return workspace.getConfiguration("rech.batch");
     }
 
 }

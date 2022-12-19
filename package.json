@@ -98,6 +98,12 @@
 					"description": "Controls whether Rech Batch extension should alert when conflicting batch extensions are detected.",
 					"default": true
 				},
+				"rech.batch.initialTabAlignment": {
+					"type": "string",
+					"description": "Controls the value of the initial tab size.",
+					"default": "4",
+					"enum": ["off", "1", "2", "3", "4", "5", "6", "7", "8"]
+        },
 				"rech.batch.snippetsType": {
 					"type": "string",
 					"default": "Community",
