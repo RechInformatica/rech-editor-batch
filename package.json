@@ -59,12 +59,6 @@
 				"path": "./syntaxes/batchfile.tmLanguage.json"
 			}
 		],
-		"snippets": [
-			{
-				"language": "bat",
-				"path": "./snippets/bat.json"
-			}
-		],
 		"commands": [
 			{
 				"command": "rech.editor.batch.batchInsertCommentLine",
@@ -103,6 +97,15 @@
 					"type": "boolean",
 					"description": "Controls whether Rech Batch extension should alert when conflicting batch extensions are detected.",
 					"default": true
+				},
+				"rech.batch.snippetsType": {
+					"type": "string",
+					"default": "Community",
+					"description": "Switch to different snippets",
+					"enum": [
+						"Rech Internal",
+						"Community"
+					]
 				}
 			}
 		}
