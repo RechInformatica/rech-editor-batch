@@ -2,7 +2,7 @@
 	"name": "rech-editor-batch",
 	"displayName": "Rech Batch",
 	"description": "Edit Batch files with Visual Studio Code",
-	"version": "0.0.21",
+	"version": "0.0.22",
 	"publisher": "rechinformatica",
 	"engines": {
 		"vscode": "^1.73.1"
@@ -129,6 +129,7 @@
 		"chai": "4.2.0",
 		"iconv-lite": "^0.4.24",
 		"q": "^1.4.1",
+		"rech-ts-commons": "^1.0.3",
 		"ts-node": "^10.9.1",
 		"vscode-languageclient": "^8.0.2",
 		"vscode-languageserver": "^8.0.2",
@@ -146,7 +147,6 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",
 		"mocha": "^10.1.0",
-		"rech-ts-commons": "^1.0.3",
 		"typescript": "^4.9.3"
 	},
 	"__metadata": {
