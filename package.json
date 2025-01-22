@@ -2,7 +2,7 @@
 	"name": "rech-editor-batch",
 	"displayName": "Rech Batch",
 	"description": "Edit Batch files with Visual Studio Code",
-	"version": "0.0.22",
+	"version": "0.0.23",
 	"publisher": "rechinformatica",
 	"engines": {
 		"vscode": "^1.73.1"
@@ -63,11 +63,13 @@
 			},
 			{
 				"command": "rech.editor.batch.tab",
-				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column"
+				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column",
+                "when": "!inlineSuggestionVisible"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
-				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column"
+				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column",
+				"when": "!inlineSuggestionVisible"
 			}
 		],
 		"keybindings": [
