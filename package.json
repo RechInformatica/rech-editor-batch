@@ -2,7 +2,7 @@
 	"name": "rech-editor-batch",
 	"displayName": "Rech Batch",
 	"description": "Edit Batch files with Visual Studio Code",
-	"version": "0.0.22",
+	"version": "0.0.23",
 	"publisher": "rechinformatica",
 	"engines": {
 		"vscode": "^1.73.1"
@@ -99,8 +99,18 @@
 					"type": "string",
 					"description": "Controls the value of the initial tab size.",
 					"default": "4",
-					"enum": ["off", "1", "2", "3", "4", "5", "6", "7", "8"]
-        },
+					"enum": [
+						"off",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+						"6",
+						"7",
+						"8"
+					]
+				},
 				"rech.batch.snippetsType": {
 					"type": "string",
 					"default": "Community",
