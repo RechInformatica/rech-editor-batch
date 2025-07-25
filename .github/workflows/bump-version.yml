@@ -1,0 +1,12 @@
+name: Bump version via shared workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  bump:
+    uses: RechInformatica/extensions-workflow/.github/workflows/bump-version.yml@master
+    with:
+      bump: patch
