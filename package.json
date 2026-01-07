@@ -63,11 +63,13 @@
 			},
 			{
 				"command": "rech.editor.batch.tab",
-				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column"
+				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column",
+                "when": "!inlineSuggestionVisible"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
-				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column"
+				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column",
+				"when": "!inlineSuggestionVisible"
 			}
 		],
 		"keybindings": [
