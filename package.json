@@ -64,7 +64,7 @@
 			{
 				"command": "rech.editor.batch.tab",
 				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column",
-				"when": "editorLangId == bat && !inlineSuggestionVisible && !inlineEditIsVisible"
+				"when": "editorLangId == bat && !inSnippetMode && !inlineEditIsVisible && !inlineSuggestionVisible"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
