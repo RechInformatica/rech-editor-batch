@@ -63,13 +63,11 @@
 			},
 			{
 				"command": "rech.editor.batch.tab",
-				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column",
-				"when": "editorLangId == bat && !inSnippetMode && !inlineEditIsVisible && !inlineSuggestionVisible"
+				"title": "Rech Batch: Performs a tab and sets the cursor on the most appropriate batch column"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
-				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column",
-				"when": "editorLangId == bat && !inlineSuggestionVisible && !inlineEditIsVisible"
+				"title": "Rech Batch: Performs a reverse-tab and sets the cursor on the most appropriate batch column"
 			}
 		],
 		"keybindings": [
@@ -81,12 +79,12 @@
 			{
 				"command": "rech.editor.batch.tab",
 				"key": "tab",
-				"when": "editorLangId == bat && !inSnippetMode && !suggestWidgetVisible"
+				"when": "editorLangId == bat && !inSnippetMode && !suggestWidgetVisible && !inlineEditIsVisible && !inlineSuggestionVisible"
 			},
 			{
 				"command": "rech.editor.batch.revtab",
 				"key": "shift+tab",
-				"when": "editorLangId == bat && !inSnippetMode"
+				"when": "editorLangId == bat && !inSnippetMode && !suggestWidgetVisible && !inlineEditIsVisible && !inlineSuggestionVisible"
 			}
 		],
 		"configuration": {
